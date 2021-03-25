@@ -21,11 +21,16 @@ namespace ShoppingCart.Controllers
             };
 
         //setup our Cart
-        private Cart cart = new Cart();
+        //Everytime a request comes in the below code will create a new instance of Cat
+        //private Cart cart = new Cart();
+        //We make it static to avoid this
+        private static Cart cart = new Cart();
 
         // GET: ShopController
         public ActionResult Index()
         {
+            //The ViewBag will update the total price each time it is ran
+            ViewBag.TotalPrice = cart.CalcTotal();
             return View(items);
         }
 
@@ -35,9 +40,11 @@ namespace ShoppingCart.Controllers
             Item itm = items.FirstOrDefault(i => i.Code.ToUpperInvariant() == code.ToUpperInvariant());
             if(itm != null)
             {
+                //Add item if it is not null and return to the Index View
                 cart.AddItem(itm);
+                //return RedirectToAction("Index");
             }
-            return View();
+            return RedirectToAction("Index");
         }
 
        
