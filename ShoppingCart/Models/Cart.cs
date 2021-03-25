@@ -24,13 +24,20 @@ namespace ShoppingCart.Models
             CartItem found = items.FirstOrDefault(p => p.Code.ToUpperInvariant() == choice.Code.ToUpperInvariant());
             if(found != null)
             {
-                found.Qty++;
+                found.Qty++; //if its found - increase the quantity already in the cart
             }
-            else
+            else //if its not found - we add it
             {
                 items.Add(new CartItem() { Code = choice.Code, Description = choice.Description, Price = choice.Price, Qty = 1 });
             }
 
+        }
+        //method for calculating the total in the cart
+        public double CalcTotal()
+        {
+            //using Generic Collections makes this easy
+            //by using the generic collections we dont need a large loop code here
+            return items.Sum(p => p.Price * p.Qty);
         }
 
     }
