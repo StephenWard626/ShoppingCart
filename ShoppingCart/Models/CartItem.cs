@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ShoppingCart.Models
 {
-    public class Cart
+    public class Item
     {
         public string ProductCode { get; set; }
         public string Description { get; set; }
@@ -13,5 +13,8 @@ namespace ShoppingCart.Models
 
     }
 
-    public class 
+    public class CartItem: Item
+    {
+        public int Qty { get; set; }
+    }
 }
