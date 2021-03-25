@@ -14,8 +14,8 @@ namespace ShoppingCart.Controllers
         private static List<Item> items
             = new List<Item>()
             {
-                new Item(){Code = "1234", Description = "Dyson Hoover", Price = 425},
-                new Item(){Code = "1452", Description = "Case of Beer", Price = 14},
+                new Item(){Code = "1234", Description = "Dyson Hoover", Price = 425.50},
+                new Item(){Code = "1452", Description = "Case of Beer", Price = 14.99},
                 new Item(){Code = "1755", Description = "Nilfisk", Price = 125},
                 new Item(){Code = "2258", Description = "Cuddly Toy", Price = 30}
             };
@@ -30,7 +30,8 @@ namespace ShoppingCart.Controllers
         public ActionResult Index()
         {
             //The ViewBag will update the total price each time it is ran
-            ViewBag.TotalPrice = cart.CalcTotal();
+            //ViewBag.TotalPrice = cart.CalcTotal().ToString("0.00");
+            ViewBag.TotalPrice = String.Format(cart.CalcTotal().ToString("C2"));
             return View(items);
         }
 

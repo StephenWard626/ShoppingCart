@@ -37,7 +37,7 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.ActionLink("Add to Cart", "Add", new { code = item.Code }) |
+                @Html.ActionLink("Add to Cart", "Add", new { code = item.Code }) 
                 
             </td>
         </tr>
@@ -46,4 +46,4 @@
 </table>
 
 
-<h2>Total Price €@ViewBag.TotalPrice</h2>
+<h2>Total Price @ViewBag.TotalPrice</h2>
