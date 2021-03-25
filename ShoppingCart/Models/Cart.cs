@@ -40,5 +40,21 @@ namespace ShoppingCart.Models
             return items.Sum(p => p.Price * p.Qty);
         }
 
+
+        public void RemoveItem(Item choice)
+        {
+            //Check that the item is not in the list already
+            //ToUpperInvarient means it will look for upper and lower case
+            CartItem found = items.FirstOrDefault(p => p.Code.ToUpperInvariant() == choice.Code.ToUpperInvariant());
+            if (found != null)
+            {
+                found.Qty--; //if its found - increase the quantity already in the cart
+            }
+            else //if its not found - we add it
+            {
+                ;
+            }
+
+        }
     }
 }

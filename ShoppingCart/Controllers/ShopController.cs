@@ -48,6 +48,40 @@ namespace ShoppingCart.Controllers
             return RedirectToAction("Index");
         }
 
-       
+        // GET: HomeController1/Edit/5
+        public ActionResult Edit(string code)
+        {
+            Item itm = items.FirstOrDefault(i => i.Code.ToUpperInvariant() == code.ToUpperInvariant());
+            if (itm != null)
+            {
+                //Add item if it is not null and return to the Index View
+                cart.RemoveItem(itm);
+                //return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+        }
+
+        // POST: HomeController1/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, IFormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: HomeController1/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+
     }
 }
