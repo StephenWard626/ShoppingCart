@@ -14,6 +14,7 @@ namespace ShoppingCart.Models
 
         public Cart()
         {
+            //made a change
             items = new List<CartItem>();
         }
 
