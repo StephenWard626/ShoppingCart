@@ -31,7 +31,7 @@ namespace ShoppingCart.Controllers
         {
             //The ViewBag will update the total price each time it is ran
             //ViewBag.TotalPrice = cart.CalcTotal().ToString("0.00");
-            ViewBag.TotalPrice = String.Format(cart.CalcTotal().ToString("C2"));
+            ViewBag.TotalPrice = String.Format(cart.CalcTotal().ToString("C2")); //the C2 here will add in the € symbol too
             return View(items);
         }
 
